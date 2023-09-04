@@ -3,6 +3,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari, and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+
+    /* Hide scrollbar for IE, Edge, and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
+}
 .bg{
   background: linear-gradient(216deg, rgba(255, 199, 95, 0.92) -8.29%, #FF6F91 37.32%, #D65DB1 72.22%, #845EC2 129.48%);
 
