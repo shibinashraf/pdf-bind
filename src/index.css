@@ -1,0 +1,15 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Days+One&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.bg{
+  background: linear-gradient(216deg, rgba(255, 199, 95, 0.92) -8.29%, #FF6F91 37.32%, #D65DB1 72.22%, #845EC2 129.48%);
+
+}
+.days{
+  font-family: 'Days One', sans-serif;
+}
+.istok{
+  font-family: 'Istok Web', sans-serif;
+}
