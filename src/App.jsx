@@ -81,7 +81,7 @@ export default function App() {
         </div>
       )}
       <div className="h-[35rem] items-center flex flex-col p-8">
-        <div className="text-4xl text-center text-white font-bold md:mt-[8rem] mt-8 roboto">
+        <div className="text-4xl text-center text-white font-bold md:mt-[8rem] mt-[5rem] roboto">
           Upload your PDF
         </div>
         <div className="text-white text-xl font-regular my-6 roboto">
@@ -94,10 +94,10 @@ export default function App() {
           Upload
         </div>
       </div>
-      <div className="p-4 text-white flex flex-col justify-center items-center gap-2 border-y-[1px] w-[90%] mx-auto">
+      <div className="p-6 text-white flex flex-col justify-center items-center pink-glass mb-8 gap-2 w-[90%] md:w-[60%] mx-auto">
 <p className="days text-xl mb-4">How to combine PDF files online?</p>
 <div className="flex  flex-wrap w-full justify-center md:gap-x-[6rem] gap-y-[2rem] items-center md:px-8 px-4">
-  <div> <img src={pdf} alt=""/></div>
+  <div> <img className="animate-bounce slo" src={pdf} alt=""/></div>
 <div className="text-md roboto mb-2">
   <ul>
 <li> ➾ Click on the upload Button.</li>
@@ -112,8 +112,10 @@ export default function App() {
 
 
       </div>
-      <div className="p-4 justify-center text-center text-white font-thin flex">
-      
+      <div className="p-4 justify-center pink-glass text-center text-white font-thin flex">
+      <div>
+
+      </div>
          
          © 2023 PDF BIND — Made with &nbsp;&#10084;&nbsp; for the people of the internet.
 
