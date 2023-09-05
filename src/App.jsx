@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import logo from "./assets/logo.svg";
+import pdf from "./assets/pdf.svg";
+
 import "./index.css";
 import Uploader from "./components/Uploader";
 import PDFMerger from "pdf-merger-js";
-import { AiFillHeart } from "react-icons/ai";
+
 
 export default function App() {
   const [mergedPdf, setMergedPdf] = useState(null); // State to store the merged PDF
@@ -91,6 +93,24 @@ export default function App() {
         >
           Upload
         </div>
+      </div>
+      <div className="p-4 text-white flex flex-col justify-center items-center gap-2 border-y-[1px] w-[90%] mx-auto">
+<p className="days text-xl mb-4">How to combine PDF files online?</p>
+<div className="flex  flex-wrap w-full justify-center md:gap-x-[6rem] gap-y-[2rem] items-center md:px-8 px-4">
+  <div> <img src={pdf} alt=""/></div>
+<div className="text-md roboto mb-2">
+  <ul>
+<li> ➾ Click on the upload Button.</li>
+<li>➾ Drag and drop or click and upload the PDF files you want to merge.</li>
+<li>➾ Rearrange the Files in the desired order.</li>
+<li>➾ Add more files, or remove files, if needed.</li>
+<li>➾ Click on 'Download Merged Pdf'.</li>
+<li>➾ Your File will automatically get downloaded.</li></ul></div>
+
+
+</div>
+
+
       </div>
       <div className="p-4 justify-center text-center text-white font-thin flex">
       
