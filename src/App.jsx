@@ -50,7 +50,7 @@ export default function App() {
   };
 
   return (
-    <div className="bg overflow-x-hidden">
+    <div className="bg overflow-x-hidden min-h-screen">
       <nav className="h-[7rem] w-screen text-white font-bold text-3xl p-12 days flex flex-row items-center">
         <img className="mr-4 h-12 w-12" src={logo} alt="Logo" />
         PDF BIND
