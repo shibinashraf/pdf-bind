@@ -18,19 +18,19 @@ export default function App() {
         PDF BIND
       </nav>
       {uploadMode && (
-        <div className="absolute top-0 left-0 w-full h-full bg-white bg-opacity-75 z-50 flex justify-center items-center">
+        <div className="absolute top-0 left-0 p-2 w-full h-full bg-white bg-opacity-10 z-50 flex justify-center items-center">
           <div className="white-box p-6 bg-white shadow-md rounded-lg">
             <div className="text-right mb-2">
               <button
                 onClick={UploadHandler}
-                className="text-gray-600 hover:text-gray-800"
+                className="text-white hover:text-black h-8 w-8 shadow-xl rounded-full bg-red-500"
               >
-                Close
+                &#x2715;
               </button>
             </div>
             <Uploader />
             <div className="mt-4 text-center">
-              <button className="px-4 py-2 bg-[#845EC2] text-white rounded-md hover:bg-opacity-80">
+              <button className="px-6 py-4 bg-[#845EC2] text-white rounded-md hover:bg-opacity-80">
                 Merge PDF
               </button>
             </div>
