@@ -95,7 +95,7 @@ export default function App() {
       <div className="p-4 justify-center text-center text-white font-thin flex">
       
          
-         © 2023 PDF BIND — Made &nbsp;&#10084;&nbsp;with for the people of the internet.
+         © 2023 PDF BIND — Made with &nbsp;&#10084;&nbsp; for the people of the internet.
 
       </div>
     </div>
