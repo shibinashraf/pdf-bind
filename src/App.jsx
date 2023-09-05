@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "./assets/logo.svg";
 import pdf from "./assets/pdf.svg";
 
-import "./index.css";
+import "index.css";
 import Uploader from "./components/Uploader";
 import PDFMerger from "pdf-merger-js";
 
