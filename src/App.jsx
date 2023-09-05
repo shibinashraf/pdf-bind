@@ -58,8 +58,8 @@ export default function App() {
         PDF BIND
       </nav>
       {uploadMode && (
-        <div className="absolute top-0 left-0 p-2 w-full h-full bg-white bg-opacity-10 z-50 flex justify-center items-center">
-          <div className="white-box p-6 bg-white shadow-md rounded-lg">
+        <div className="absolute top-0 left-0 p-2 w-full h-full pink-glass bg-opacity-10 z-50 flex justify-center items-center">
+          <div className="white-box p-6 pink-glass shadow-md rounded-lg">
             <div className="text-right mb-2">
               <button
                 onClick={UploadHandler}
@@ -72,7 +72,7 @@ export default function App() {
             <div className="mt-4 text-center">
               <button
                 onClick={downloadMergedPDF}
-                className="px-6 py-4 bg-[#845EC2] text-white rounded-lg hover:bg-opacity-80 drop-shadow-xl "
+                className="px-6 py-4 blue-glass text-white rounded-lg hover:bg-opacity-80 drop-shadow-xl "
               >
                 Download Merged PDF
               </button>
@@ -89,7 +89,7 @@ export default function App() {
         </div>
         <div
           onClick={UploadHandler}
-          className="text-center shadow-xl text-lg rounded-xl py-4 px-6 w-[7rem] bg-[#845EC2] hover:scale-105 ease-in-out duration-300 text-white"
+          className="text-center shadow-xl text-lg rounded-xl py-4 px-6 w-[7rem] blue-glass hover:scale-105 ease-in-out duration-300 text-white"
         >
           Upload
         </div>
