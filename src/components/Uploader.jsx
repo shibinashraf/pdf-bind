@@ -2,19 +2,22 @@ import React, { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-export default function Uploader() {
+export default function Uploader({ onUpload }) {
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const onDrop = useCallback((acceptedFiles) => {
-    // Create an array of file objects with additional data for order and key
     const newFiles = acceptedFiles.map((file, index) => ({
       file,
-      order: index,
+      order: uploadedFiles.length + index, // Set order based on the current length of uploadedFiles
       key: Date.now() + index,
     }));
 
+    // Merge the new files with the existing ones
     setUploadedFiles((prevFiles) => [...prevFiles, ...newFiles]);
-  }, []);
+
+    // Call the onUpload function with the merged files
+    onUpload([...uploadedFiles, ...newFiles]);
+  }, [onUpload, uploadedFiles]); // Include uploadedFiles in the dependencies array
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: ".pdf",
@@ -37,8 +40,13 @@ export default function Uploader() {
     setUploadedFiles(updatedItems);
   };
 
+  const handleTouchStart = (e, item) => {
+    // Prevent default touchmove behavior to allow for dragging
+    e.preventDefault();
+  };
+
   return (
-    <div className="white-box p-6 bg-white shadow-md rounded-lg">
+    <div className="white-box p-6 bg-white   rounded-lg">
       <div {...getRootProps()} className="border-2 border-dashed border-gray-300 p-4 text-center cursor-pointer">
         <input {...getInputProps()} />
         <p className="text-gray-400 text-lg">Drag & drop PDF files here, or click to select files</p>
@@ -46,29 +54,37 @@ export default function Uploader() {
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId={`file-list-${Math.random()}`}>
           {(provided) => (
-            <div ref={provided.innerRef} {...provided.droppableProps}>
+            <div
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+              onTouchStart={(e) => handleTouchStart(e)}
+            >
               {uploadedFiles.map((item, index) => (
-                <Draggable key={item.key} draggableId={item.key.toString()} index={index}>
+                <Draggable
+                  key={item.key}
+                  draggableId={item.key.toString()}
+                  index={index}
+                >
                   {(provided) => (
                     <div
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
+                      onTouchStart={(e) => handleTouchStart(e, item)}
                       className="bg-gray-200 p-4 mt-4 rounded-md"
                     >
-                      <div className="flex justify-between items-center">
+                      <div className="flex justify-between items-center ">
                         <span>{item.file.name}</span>
                         <button
-                          className="text-red-600 hover:text-red-800"
+                          className="text-red-600 ml-2 hover:text-red-800 font-bold"
                           onClick={() => {
-                            // Remove the file from the list
                             const updatedFiles = uploadedFiles.filter(
                               (file) => file.key !== item.key
                             );
                             setUploadedFiles(updatedFiles);
                           }}
                         >
-                          Remove
+                          &#x2715;
                         </button>
                       </div>
                     </div>
