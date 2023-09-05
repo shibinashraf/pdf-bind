@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import logo from "./assets/logo.svg";
 import "./index.css";
 import Uploader from "./components/Uploader";
-import PDFMerger from "pdf-merger-js"; // Import pdf-merger-js
+import PDFMerger from "pdf-merger-js";
+import { AiFillHeart } from "react-icons/ai";
 
 export default function App() {
   const [mergedPdf, setMergedPdf] = useState(null); // State to store the merged PDF
@@ -35,6 +36,7 @@ export default function App() {
       a.click();
       document.body.removeChild(a);
     }
+    setMergedPdf(null)
   };
 
   // Function to handle file uploads
@@ -48,7 +50,7 @@ export default function App() {
   };
 
   return (
-    <div className="z-[-1] min-w-screen min-h-screen bg no-scrollbar">
+    <div className="bg overflow-x-hidden">
       <nav className="h-[7rem] w-screen text-white font-bold text-3xl p-12 days flex flex-row items-center">
         <img className="mr-4 h-12 w-12" src={logo} alt="Logo" />
         PDF BIND
@@ -59,7 +61,7 @@ export default function App() {
             <div className="text-right mb-2">
               <button
                 onClick={UploadHandler}
-                className="text-white hover:text-black h-8 w-8 shadow-xl rounded-full bg-red-500"
+                className="text-white hover:scale-110 ease-in-out duration-300 drop-shadow-lg h-8 w-8 rounded-full bg-red-500"
               >
                 &#x2715;
               </button>
@@ -68,7 +70,7 @@ export default function App() {
             <div className="mt-4 text-center">
               <button
                 onClick={downloadMergedPDF}
-                className="px-6 py-4 bg-[#845EC2] text-white rounded-md hover:bg-opacity-80"
+                className="px-6 py-4 bg-[#845EC2] text-white rounded-lg hover:bg-opacity-80 drop-shadow-xl "
               >
                 Download Merged PDF
               </button>
@@ -77,10 +79,10 @@ export default function App() {
         </div>
       )}
       <div className="h-[35rem] items-center flex flex-col p-8">
-        <div className="text-3xl text-white font-bold mt-6 istok">
+        <div className="text-4xl text-center text-white font-bold md:mt-[8rem] mt-8 roboto">
           Upload your PDF
         </div>
-        <div className="text-white text-xl font-thin my-6 istok">
+        <div className="text-white text-xl font-regular my-6 roboto">
           Merge pdf with ease.
         </div>
         <div
@@ -89,6 +91,12 @@ export default function App() {
         >
           Upload
         </div>
+      </div>
+      <div className="p-4 justify-center text-center text-white font-thin flex">
+      
+         
+         © 2023 PDF BIND — Made &nbsp;&#10084;&nbsp;with for the people of the internet.
+
       </div>
     </div>
   );

@@ -8,16 +8,14 @@ export default function Uploader({ onUpload }) {
   const onDrop = useCallback((acceptedFiles) => {
     const newFiles = acceptedFiles.map((file, index) => ({
       file,
-      order: uploadedFiles.length + index, // Set order based on the current length of uploadedFiles
+      order: uploadedFiles.length + index,
       key: Date.now() + index,
     }));
 
-    // Merge the new files with the existing ones
     setUploadedFiles((prevFiles) => [...prevFiles, ...newFiles]);
 
-    // Call the onUpload function with the merged files
     onUpload([...uploadedFiles, ...newFiles]);
-  }, [onUpload, uploadedFiles]); // Include uploadedFiles in the dependencies array
+  }, [onUpload, uploadedFiles]);
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: ".pdf",
@@ -37,19 +35,20 @@ export default function Uploader({ onUpload }) {
       order: index,
     }));
 
-    setUploadedFiles(updatedItems);
+    setUploadedFiles(updatedItems); // Update the state with the new order
+
+    onUpload(updatedItems); // Call onUpload with the updated order
   };
 
   const handleTouchStart = (e, item) => {
-    // Prevent default touchmove behavior to allow for dragging
     e.preventDefault();
   };
 
   return (
-    <div className="white-box p-6 bg-white   rounded-lg">
-      <div {...getRootProps()} className="border-2 border-dashed border-gray-300 p-4 text-center cursor-pointer">
+    <div className="white-box p-6 bg-white  rounded-lg">
+      <div {...getRootProps()} className="border-2 md:h-[20rem] flex items-center justify-center border-dashed rounded-lg border-gray-300 p-6  text-center cursor-pointer ">
         <input {...getInputProps()} />
-        <p className="text-gray-400 text-lg">Drag & drop PDF files here, or click to select files</p>
+        <div className="text-gray-400  text-lg">Drag & drop PDF files here, or click to select files</div>
       </div>
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId={`file-list-${Math.random()}`}>
@@ -82,6 +81,7 @@ export default function Uploader({ onUpload }) {
                               (file) => file.key !== item.key
                             );
                             setUploadedFiles(updatedFiles);
+                            onUpload(updatedFiles); // Update onUpload with the new state
                           }}
                         >
                           &#x2715;
